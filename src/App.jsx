@@ -6,6 +6,43 @@ import styles from './App.module.css';
 
 import './global.css';
 
+const posts = [
+  {
+    id: 1,
+    author: {
+      avatarUrl: 'https://github.com/diego3g.png',
+      name: 'Diego Fernandes',
+      role: 'CTO @Rocketseat'
+    },
+    content: [
+      { type: 'paragraph', content: 'Fala galeraa 👋' },
+      { type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀' },
+      { type: 'link', content: 'jane.design/doctorcare' },
+    ],
+    hashtags: [
+      '#novoprojeto', '#nlw', '#rocketseat',
+    ],
+    publishedAt: new Date('2022-06-29 09:40:00'),
+  },
+  {
+    id: 2,
+    author: {
+      avatarUrl: 'https://github.com/maykbrito.png',
+      name: 'Mayk Brito',
+      role: 'Educator @Rocketseat'
+    },
+    content: [
+      { type: 'paragraph', content: 'Fala galeraa 👋' },
+      { type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀' },
+      { type: 'link', content: 'jane.design/doctorcare' },
+    ],
+    hashtags: [
+      '#novoprojeto', '#nlw', '#rocketseat',
+    ],
+    publishedAt: new Date('2022-06-30 09:44:00'),
+  },
+];
+
 export function App() {
   return (
     <div>
@@ -14,9 +51,16 @@ export function App() {
       <div className={styles.wrapper}>
         <Sidebar />
         <main>
-          <Post author="Michelle Thaynara" content="Conteúdo do post de Michelle!!!" />
-          <Post author="Ricardo Oliveira" content="Conteúdo do post de Ricardo!!!" />
-          <Post author="Desconhecido" content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga officiis odio sed mollitia aperiam iure tenetur nobis aliquam, odit culpa. Tempore, natus accusamus facere cupiditate iure porro! Iusto, accusamus adipisci." />
+          {posts.map(post => {
+            return (
+              <Post
+                author={post.author}
+                content={post.content}
+                publishedAt={post.publishedAt}
+                hashtags={post.hashtags}
+              />
+            )
+          })}
         </main>
       </div>
     </div>
