@@ -52,15 +52,15 @@ export function Post({ author, publishedAt, content, hashtags }) {
       <div className={styles.content}>
         {content.map(line => {
           if (line.type === 'paragraph') {
-            return <p>{line.content}</p>;
+            return <p key={line.content}>{line.content}</p>;
           } else if (line.type === 'link') {
-            return <p><a href='#'>{line.content}</a></p>
+            return <p key={line.content}><a href='#'>{line.content}</a></p>
           }
         })}
 
         <p>
           {hashtags.map(hashtag => {
-            return <a href="">{hashtag}{' '}</a>;
+            return <a key={hashtag} href="">{hashtag}{' '}</a>;
           })}
         </p>
       </div>
@@ -82,7 +82,7 @@ export function Post({ author, publishedAt, content, hashtags }) {
 
       <div className={styles.commentsList}>
         {comments.map(comment => {
-          return <Comment content={comment} />
+          return <Comment key={comment} content={comment} />
         })}
       </div>
     </article>
