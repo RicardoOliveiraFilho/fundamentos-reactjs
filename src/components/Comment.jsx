@@ -11,7 +11,14 @@ export function Comment({ content, onDelete }) {
     }
 
     function handleLikeComment() {
-        setLikeCount(likeCount + 1);
+        /*
+            Estado do React relacionado com Closures.
+            Sempre que uma informação precisar ser atualizada com base nela mesma
+            é bom usar o padrão das closures.
+        */
+        setLikeCount((currentState) => {
+            return currentState + 1
+        });
     }
 
     return (
